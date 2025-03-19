@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83984a6d1af8c174c869ca6daf0aa713, type: 3}
+  m_Name: Item EnergyDrink
+  m_EditorClassIdentifier: 
+  itemType: 2
+  itemId: 3
+  itemName: "\uC5D0\uB108\uC9C0 \uB4DC\uB9C1\uD06C"
+  itemDesc: "\"\uD798\uC774 \uB09C\uB2E4 \uD798\uC774 \uB098!!\"\n\n\uB370\uBBF8\uC9C0
+    \uC99D\uAC00, \uCCB4\uB825 \uAC10\uC18C"
+  itemIcon: {fileID: 1394850388, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
+  baseDamage: 0.1
+  baseCount: 0.05
+  damages:
+  - 0.2
+  - 0.3
+  - 0.4
+  - 0.5
+  - 0.6
+  counts:
+  - 0.1
+  - 0.15
+  - 0.2
+  - 0.25
+  - 0.3
+  projectile: {fileID: 0}
+  hand: {fileID: 0}

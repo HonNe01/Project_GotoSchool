@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83984a6d1af8c174c869ca6daf0aa713, type: 3}
+  m_Name: Item Book
+  m_EditorClassIdentifier: 
+  itemType: 1
+  itemId: 0
+  itemName: "\uC804\uACF5\uCC45"
+  itemDesc: "\"\uC774\uAC74 \uCC45\uC774 \uC544\uB2C8\uB77C \uD749\uAE30\uC57C\"\n\n\uB370\uBBF8\uC9C0
+    \uC99D\uAC00, \uAD00\uD1B5\uB825 \uC99D\uAC00"
+  itemIcon: {fileID: -209744480, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
+  baseDamage: 3
+  baseCount: 0
+  damages:
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  counts:
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  projectile: {fileID: 4122565992612807282, guid: 00818f04400b8354c96f7dbafdd74b81, type: 3}
+  hand: {fileID: -1684424717, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
