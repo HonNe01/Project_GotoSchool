@@ -28,6 +28,7 @@ public class StageManager : MonoBehaviour
     public GameObject[] navMeshObjects;
     public GameObject[] enemySpawner;
 
+    public GameObject pauseMenu;
     public GameObject enemyCleaner;
     public GameObject bossPrefab;
     public PoolManager poolManager;
@@ -67,6 +68,18 @@ public class StageManager : MonoBehaviour
             gameTime = maxGameTime;
             
             StartCoroutine(BossAppears());
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!isGameRunning)
+            {
+                GameResume();
+            }
+            else
+            {
+                GamePause();
+            }
         }
     }
 
@@ -120,6 +133,7 @@ public class StageManager : MonoBehaviour
         SetMapCamera(GameManager.instance.curMap);
         enemySpawner[GameManager.instance.curMap].SetActive(true);
         navMeshObjects[GameManager.instance.curMap].SetActive(true);
+        pauseMenu.SetActive(false);
 
 
         // 게임 시작
@@ -200,8 +214,17 @@ public class StageManager : MonoBehaviour
 
         Debug.Log("Game Stop");
     }
+
+    public void GamePause()
+    {
+        GameStop();
+
+        pauseMenu.SetActive(true);
+    }
+
     public void GameResume()
     {
+        pauseMenu.SetActive(false);
         isGameRunning = true;
         Time.timeScale = 1;
 

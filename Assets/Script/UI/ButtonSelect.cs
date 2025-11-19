@@ -79,6 +79,13 @@ public class ButtonSelect : MonoBehaviour
         if (curCharIndex == charIndex || isChange)
             return;
 
+        if (charIndex == 2 || charIndex == 3)
+        {
+            Debug.Log("Char Lock!");
+
+            return;
+        }
+
         isChange = true;
         GameManager.instance.playerId = charIndex;
 

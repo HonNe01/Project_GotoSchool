@@ -134,7 +134,6 @@ public class Enemy : MonoBehaviour
             if (isPencilHit) // Pencil 데미지를 받을 수 있는 상태인지 확인
                 return;
 
-
             StartCoroutine(PencilHit()); // Pencil 데미지 제한
 
             float damage = collision.GetComponent<Bullet>().damage;
@@ -184,6 +183,10 @@ public class Enemy : MonoBehaviour
         if (collision.CompareTag("Dirty"))
         {
             isDirtyHit = false;
+        }
+        else if (collision.CompareTag("Pencil"))
+        {
+            isPencilHit = false;
         }
     }
 

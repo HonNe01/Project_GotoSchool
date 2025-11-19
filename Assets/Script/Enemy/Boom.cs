@@ -79,11 +79,11 @@ public class Boom : MonoBehaviour
         switch (GameManager.instance.curMap)
         {
             case 0:
-                blinkTime = 1.2f;
+                blinkTime = 2f;
 
                 break;
             case 1:
-                blinkTime = 1f;
+                blinkTime = 1.2f;
 
                 break;
         }

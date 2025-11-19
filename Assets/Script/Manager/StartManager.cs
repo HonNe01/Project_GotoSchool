@@ -7,6 +7,7 @@ public class StartManager : MonoBehaviour
 {
     public GameObject characterSelectPanel;
     public GameObject startPanel;
+    public GameObject optionPanel;
     public Animator cameraAnim;
     public Camera mainCamera;
 
@@ -61,6 +62,11 @@ public class StartManager : MonoBehaviour
         characterSelectPanel.SetActive(true);
     }
 
+    public void OnOption()
+    {
+        optionPanel.SetActive(true);
+    }
+
     IEnumerator OnCancel()
     {
         Debug.Log("Char Selected Cancel");
@@ -76,5 +82,14 @@ public class StartManager : MonoBehaviour
         // 버그 돌려막기
         GameObject startButton = startPanel.transform.Find("Button_Start").gameObject;
         startButton.SetActive(true);
+    }
+
+    public void GameEnd()
+    {
+#if UNITY_EDITOR
+        EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 }

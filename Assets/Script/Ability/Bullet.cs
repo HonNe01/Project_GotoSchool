@@ -17,8 +17,8 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
-        if (type == Type.book && type == Type.dirty) {
-            transform.Rotate(Vector3.forward * 100 * Time.deltaTime);
+        if (type == Type.book) {
+            transform.Rotate(Vector3.forward * 150 * Time.deltaTime);
         }
     }
 

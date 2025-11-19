@@ -9,12 +9,14 @@ public class AudioManager : MonoBehaviour
     public AudioClip battleClip;
     public AudioClip bossClip;
     public float bgmVolume;
+    [Range(0, 1)] public float bgmSlider = 1f;
     AudioSource bgmPlayer;
     AudioHighPassFilter bgmEffect;
 
     [Header(" # SFX")]
     public AudioClip[] sfxClips;
     public float sfxVolume;
+    [Range(0, 1)] public float sfxSlider = 1f;
     public int channels;
     AudioSource[] sfxPlayers;
     int channelIndex;
@@ -100,6 +102,19 @@ public class AudioManager : MonoBehaviour
         {
             bgmEffect.enabled = isPlay;
         }
+    }
+
+    public void UpdateBgmVolume()
+    {
+        if (bgmPlayer != null)
+            bgmPlayer.volume = bgmVolume * bgmSlider;
+    }
+
+    public void UpdateSfxVolume()
+    {
+        if (sfxPlayers != null)
+            foreach (var sfxPlayer in sfxPlayers)
+                sfxPlayer.volume = sfxVolume * sfxSlider;
     }
 
     public void PlaySfx(SFX sfx)            // 효과음 재생 및 정지

@@ -32,7 +32,7 @@ public class WeaponManager : MonoBehaviour
             switch (id)
             {
                 case 0:
-                    transform.Rotate(Vector3.back * speed * 0.5f * Time.deltaTime);
+                    transform.Rotate(Vector3.back * speed * 0.6f * Time.deltaTime);
 
                     break;  // 연필
                 case 1:
@@ -187,6 +187,19 @@ public class WeaponManager : MonoBehaviour
     public void ApplyDamage()
     {
         damage = baseDamage + (baseDamage * PlayerManager.instance.buffMultiplier) + (baseDamage * (1 - Character.Damage));
+
+        // 데미지 적용
+        if (type == ItemData.ItemType.Melee)
+        {
+            if (id == 0)
+            {
+                Pencil();
+            }
+            else if (id == 1)
+            {
+                Dirty();
+            }
+        }
     }
 
     void Pencil()    // 연필

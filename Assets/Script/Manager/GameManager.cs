@@ -1,10 +1,8 @@
-using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-
 
     [Header(" # Game Infos")]
     public int playerId;
@@ -23,10 +21,5 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         Application.targetFrameRate = 60;
-    }
-
-    public void GameEnd()
-    {
-        Application.Quit();
     }
 }

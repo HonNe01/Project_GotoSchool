@@ -22,7 +22,7 @@ public class DamageText : MonoBehaviour
 
     public void SetDamage(float damage)
     {
-        damageText.text = ((int)damage).ToString();
+        damageText.text = damage.ToString();
         StartCoroutine(TextEffect());
     }
 
