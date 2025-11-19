@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -20,6 +21,10 @@ public class AudioManager : MonoBehaviour
     public int channels;
     AudioSource[] sfxPlayers;
     int channelIndex;
+
+    private float sfxBufferTime = 0.1f;
+    private Dictionary<SFX, float> lastSFXtime = new Dictionary<SFX, float>();
+
 
     public enum SFX { Dead, Hit, LevelUp = 3, Melee, Range = 6, Boom, Damaged = 9, Tick = 11, Bus, Win, Lose, Select }
 
@@ -119,6 +124,15 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySfx(SFX sfx)            // 효과음 재생 및 정지
     {
+        // 사운드 체크
+        float now = Time.time;
+        if (lastSFXtime.TryGetValue(sfx, out float lastTime))
+        {
+            if (now - lastTime < sfxBufferTime) return;
+        }
+        lastSFXtime[sfx] = now;
+
+        // 사운드 재생
         for (int index = 0; index < sfxPlayers.Length; index++) {
             int loopIndex = (index + channelIndex) % sfxPlayers.Length;
 
