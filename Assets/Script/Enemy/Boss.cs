@@ -4,6 +4,8 @@ using UnityEngine.AI;
 
 public class Boss : MonoBehaviour
 {
+    public static Boss instance;
+
     [Header("Basic Settings")]
     private new Collider2D collider;
     private Rigidbody2D rigid;
@@ -42,6 +44,10 @@ public class Boss : MonoBehaviour
 
     private void Awake()
     {
+        if (instance == null) instance = this;
+        else Destroy(gameObject);
+
+
         collider = GetComponent<Collider2D>();
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();

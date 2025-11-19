@@ -18,7 +18,6 @@ public class StageManager : MonoBehaviour
     public float maxGameTime = 2 * 10f;
     public float gameTime;
     public bool isGameRunning = false;
-    public bool isBoss = false;
 
     public TextMeshProUGUI roundText;
 
@@ -29,8 +28,6 @@ public class StageManager : MonoBehaviour
     public GameObject[] enemySpawner;
 
     public GameObject pauseMenu;
-    public GameObject enemyCleaner;
-    public GameObject bossPrefab;
     public PoolManager poolManager;
     public LevelUp uiLevelUp;
     public Result uiResult;
@@ -57,17 +54,17 @@ public class StageManager : MonoBehaviour
 
     void Update()
     {
-        if (!isGameRunning || isBoss)
-            return;
+        if (!isGameRunning) return;
 
         // Stage Play Time
         gameTime += Time.deltaTime;
 
+        // Boss Time
         if (gameTime > maxGameTime)
         {
             gameTime = maxGameTime;
-            
-            StartCoroutine(BossAppears());
+
+            BossManager.instance.SpawnBoss();
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -116,7 +113,6 @@ public class StageManager : MonoBehaviour
     void GameSet()
     {
         isGameRunning = true;
-        isBoss = false;
 
         // 플레이어 초기화
         PlayerManager.instance.ResetPlayer();
@@ -151,22 +147,6 @@ public class StageManager : MonoBehaviour
     public void SetMapCamera(int mapIndex)
     {
         confiner.m_BoundingShape2D = mapCollider[mapIndex];
-    }
-
-    public IEnumerator BossAppears()   // 보스 등장
-    {
-        
-        isBoss = true;
-        yield return new WaitForSeconds(0.5f);
-        enemyCleaner.SetActive(true);
-        yield return new WaitForSeconds(0.1f);
-        enemyCleaner.SetActive(false);
-        Debug.Log("WARNING! 'Boss Appears' WARNING!");
-
-        AudioManager.instance.PlayBgm("Boss");
-        foreach (var spawner in enemySpawner) spawner.SetActive(false);
-        yield return new WaitForSeconds(0.3f);
-        Instantiate(bossPrefab, transform.position, Quaternion.identity);
     }
 
     public void GameOver()

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class HUD : MonoBehaviour
 {
     // UI 종류
-    public enum InfoType { Exp, Level, Kill, Time, Health }
+    public enum InfoType { Exp, Level, Kill, Time, Health, BossHealh }
     public InfoType type;
 
     // UI 오브젝트
@@ -50,6 +50,14 @@ public class HUD : MonoBehaviour
                 float curHealth = PlayerManager.instance.health;
                 float maxHealth = PlayerManager.instance.MaxHealth;
                 mySlider.value = curHealth / maxHealth;
+                break;
+            case InfoType.BossHealh:
+                if (BossManager.instance != null && Boss.instance != null)
+                {
+                    curHealth = Boss.instance.curHealth;
+                    maxHealth = Boss.instance.maxHealth;
+                    mySlider.value = curHealth / maxHealth;
+                }
                 break;
         }
     }

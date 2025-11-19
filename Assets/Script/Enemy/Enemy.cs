@@ -224,9 +224,6 @@ public class Enemy : MonoBehaviour
 
     void DamageText(float damage)
     {
-        if (StageManager.instance.isBoss)
-            return;
-
         // Damage Text Effect
         GameObject damageText = StageManager.instance.poolManager.Get(2);
         Vector2 camaraPoint = RectTransformUtility.WorldToScreenPoint(Camera.main,
@@ -261,7 +258,7 @@ public class Enemy : MonoBehaviour
 
             anim.SetTrigger("Hit");
             anim.SetBool("Dead", true);
-            if (StageManager.instance.isGameRunning || !StageManager.instance.isBoss)
+            if (StageManager.instance.isGameRunning || !BossManager.instance.isBoss)
             {
                 PlayerManager.instance.kill++;
                 PlayerManager.instance.GetExp();
